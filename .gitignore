@@ -1,0 +1,11 @@
+# Development database
+db.sqlite3
+
+# Development container
+.devcontainer
+
+# VSCode configuration
+.vscode
+
+# Python cache
+__pycache__
