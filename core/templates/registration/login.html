@@ -2,12 +2,36 @@
 
 {% load static %}
 {% block css %}
-    <link rel="stylesheet" href="{% static 'core/style.css' %}">
+    <link rel="stylesheet" href="{% static 'core/registration.css' %}">
 {% endblock %}
 
 {% block title %}Login{% endblock %}
 {% block description %}Login page of the Django Learning app{% endblock %}
 
 {% block content %}
-    <h1>Welcome to the login page</h1>
+    <main class="form_block">
+        <div class="form_container">
+            <h1 class="form_title">Login</h1>
+            
+            <form class="form_content" method="post">
+                {% csrf_token %}
+                <div class="form_field">
+                    <label class="field_label" for="name">Name</label>
+                    <input class="field_input" type="text" name="name" id="name" autocomplete="name">
+                </div>
+                
+                <div class="form_field">
+                    <label class="field_label" for="email">Email</label>
+                    <input class="field_input" type="text" name="email" id="email" autocomplete="email">
+                </div>
+
+                <div class="form_field">
+                    <label class="field_label" for="password">Password</label>
+                    <input class="field_input" type="password" name="password" id="password">
+                </div>
+                
+                <button class="submit_button" type="submit">Login</button>
+            </form>
+        </div>
+    </main>
 {% endblock %}
