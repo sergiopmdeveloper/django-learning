@@ -1,20 +1,20 @@
 from django import forms
+from django.contrib.auth.models import User
 
 
-class LoginForm(forms.Form):
+class LoginForm(forms.ModelForm):
     """
     Login form validator
     """
 
-    username = forms.CharField(
-        required=True,
-        error_messages={
-            "required": "Required",
-        },
-    )
-    password = forms.CharField(
-        required=True,
-        error_messages={
-            "required": "Required",
-        },
-    )
+    class Meta:
+        model = User
+        fields = ["username", "password"]
+        error_messages = {
+            "username": {
+                "required": "Required",
+            },
+            "password": {
+                "required": "Required",
+            },
+        }
