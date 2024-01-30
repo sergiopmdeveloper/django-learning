@@ -15,19 +15,21 @@
             
             <form class="form_content" method="post">
                 {% csrf_token %}
-                <div class="form_field">
-                    <label class="field_label" for="name">Name</label>
-                    <input class="field_input" type="text" name="name" id="name" autocomplete="name">
-                </div>
                 
                 <div class="form_field">
-                    <label class="field_label" for="email">Email</label>
-                    <input class="field_input" type="text" name="email" id="email" autocomplete="email">
+                    <label class="field_label" for="username">Username</label>
+                    <input class="field_input" type="text" name="username" id="username" autocomplete="username" value={{ username }}>
+                    {% if form_errors.username %}
+                        <span class="field_error">{{ form_errors.username }}</span>
+                    {% endif %}
                 </div>
 
                 <div class="form_field">
                     <label class="field_label" for="password">Password</label>
-                    <input class="field_input" type="password" name="password" id="password" autocomplete="current-password">
+                    <input class="field_input" type="password" name="password" id="password" autocomplete="current-password" value={{ password }}>
+                    {% if form_errors.password %}
+                        <span class="field_error">{{ form_errors.password }}</span>
+                    {% endif %}
                 </div>
                 
                 <button class="submit_button" type="submit">Login</button>
