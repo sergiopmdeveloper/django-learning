@@ -20,7 +20,7 @@
                     <label class="field_label" for="username">Username</label>
                     <input class="field_input" type="text" name="username" id="username" autocomplete="username" value={{ username }}>
                     {% if form_errors.username %}
-                        <span class="field_error">{{ form_errors.username }}</span>
+                        <span class="form_error">{{ form_errors.username }}</span>
                     {% endif %}
                 </div>
 
@@ -28,12 +28,14 @@
                     <label class="field_label" for="password">Password</label>
                     <input class="field_input" type="password" name="password" id="password" autocomplete="current-password" value={{ password }}>
                     {% if form_errors.password %}
-                        <span class="field_error">{{ form_errors.password }}</span>
+                        <span class="form_error">{{ form_errors.password }}</span>
                     {% endif %}
                 </div>
                 
                 <button class="submit_button" type="submit">Login</button>
             </form>
+
+            {% if invalid_credentials %}<span class="form_error">Invalid credentials</span>{% endif %}
         </div>
     </main>
 {% endblock %}

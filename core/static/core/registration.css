@@ -6,6 +6,7 @@
 }
 
 .form_container {
+    position: relative;
     width: 25rem;
     background-color: whitesmoke;
     margin: 1rem;
@@ -43,15 +44,22 @@
     white-space: nowrap;
 }
 
-.field_error {
+.form_error {
     position: absolute;
-    top: 0;
     right: 0;
     padding: 0.2rem 0.3rem;
     border-radius: 0.2rem;
     font-size: 0.8rem;
     color: darkred;
     background-color: lightcoral;
+}
+
+.form_container > .form_error {
+    top: -10%;
+}
+
+.form_field > .form_error {
+    top: 0;
 }
 
 .submit_button {

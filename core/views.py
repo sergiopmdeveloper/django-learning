@@ -34,6 +34,15 @@ def sign_in(request: HttpRequest) -> HttpResponse:
 
                 return redirect("/")
 
+            else:
+                return render(
+                    request,
+                    "registration/login.html",
+                    {
+                        "invalid_credentials": True,
+                    },
+                )
+
         else:
             form_errors["username"] = form.errors.get("username", [None])[0]
             form_errors["password"] = form.errors.get("password", [None])[0]
@@ -48,4 +57,4 @@ def sign_in(request: HttpRequest) -> HttpResponse:
                 },
             )
 
-    return render(request, "registration/login.html", {"form_errors": form_errors})
+    return render(request, "registration/login.html")
