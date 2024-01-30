@@ -1,5 +1,6 @@
+from django.contrib.auth import authenticate, login
 from django.http import HttpRequest, HttpResponse
-from django.shortcuts import render
+from django.shortcuts import redirect, render
 
 from .forms import LoginForm
 
@@ -12,7 +13,7 @@ def index(request: HttpRequest) -> HttpResponse:
     return render(request, "core/index.html")
 
 
-def login(request: HttpRequest) -> HttpResponse:
+def sign_in(request: HttpRequest) -> HttpResponse:
     """
     View for the sign in page.
     """
@@ -23,8 +24,16 @@ def login(request: HttpRequest) -> HttpResponse:
         form = LoginForm(request.POST)
 
         if form.is_valid():
-            # TODO: Authenticate user
-            ...
+            username = form.cleaned_data["username"]
+            password = form.cleaned_data["password"]
+
+            user = authenticate(username=username, password=password)
+
+            if user:
+                login(request, user)
+
+                return redirect("/")
+
         else:
             form_errors["username"] = form.errors.get("username", [None])[0]
             form_errors["password"] = form.errors.get("password", [None])[0]
