@@ -1,4 +1,4 @@
-from django.contrib.auth import authenticate, login
+from django.contrib.auth import authenticate, login, logout
 from django.contrib.auth.decorators import login_required
 from django.http import HttpRequest, HttpResponse
 from django.shortcuts import redirect, render
@@ -63,3 +63,13 @@ def sign_in(request: HttpRequest) -> HttpResponse:
             )
 
     return render(request, "registration/login.html")
+
+
+def sign_out(request: HttpRequest) -> HttpResponse:
+    """
+    View for logging out.
+    """
+
+    logout(request)
+
+    return redirect("login")
