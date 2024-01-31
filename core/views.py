@@ -1,10 +1,12 @@
 from django.contrib.auth import authenticate, login
+from django.contrib.auth.decorators import login_required
 from django.http import HttpRequest, HttpResponse
 from django.shortcuts import redirect, render
 
 from .forms import LoginForm
 
 
+@login_required()
 def index(request: HttpRequest) -> HttpResponse:
     """
     View for the index page.
@@ -17,6 +19,9 @@ def sign_in(request: HttpRequest) -> HttpResponse:
     """
     View for the sign in page.
     """
+
+    if request.user.is_authenticated:
+        return redirect("/")
 
     form_errors = {}
 

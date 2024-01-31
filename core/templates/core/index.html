@@ -4,5 +4,7 @@
 {% block description %}Home page of the Django Learning app{% endblock %}
 
 {% block content %}
-    <h1>Welcome to the home page</h1>
+    {% if user.is_authenticated %}
+        <h1>Hi {{ user.username }}!</h1>
+    {% endif %}
 {% endblock %}
