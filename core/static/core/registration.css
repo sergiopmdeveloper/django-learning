@@ -55,7 +55,7 @@
 }
 
 .form_container > .form_error {
-    top: -10%;
+    top: -2rem;
 }
 
 .form_field > .form_error {

@@ -18,31 +18,49 @@
                 
                 <div class="form_field">
                     <label class="field_label" for="username">Username</label>
-                    <input class="field_input" type="text" name="username" id="username" autocomplete="username">
+                    <input class="field_input" type="text" name="username" id="username" autocomplete="username" value={{ username }}>
+                    {% if form_errors.username %}
+                        <span class="form_error">{{ form_errors.username }}</span>
+                    {% endif %}
                 </div>
 
                 <div class="form_field">
                     <label class="field_label" for="first_name">First name</label>
-                    <input class="field_input" type="text" name="first_name" id="first_name" autocomplete="first_name">
+                    <input class="field_input" type="text" name="first_name" id="first_name" autocomplete="first_name" value={{ first_name }}>
+                    {% if form_errors.first_name %}
+                        <span class="form_error">{{ form_errors.first_name }}</span>
+                    {% endif %}
                 </div>
 
                 <div class="form_field">
                     <label class="field_label" for="last_name">Last name</label>
-                    <input class="field_input" type="text" name="last_name" id="last_name" autocomplete="last_name">
+                    <input class="field_input" type="text" name="last_name" id="last_name" autocomplete="family-name" value={{ last_name }}>
+                    {% if form_errors.last_name %}
+                        <span class="form_error">{{ form_errors.last_name }}</span>
+                    {% endif %}
                 </div>
 
                 <div class="form_field">
                     <label class="field_label" for="email">Email</label>
-                    <input class="field_input" type="text" name="email" id="email" autocomplete="email">
+                    <input class="field_input" type="text" name="email" id="email" autocomplete="email" value={{ email }}>
+                    {% if form_errors.email %}
+                        <span class="form_error">{{ form_errors.email }}</span>
+                    {% endif %}
                 </div>
 
                 <div class="form_field">
                     <label class="field_label" for="password">Password</label>
                     <input class="field_input" type="password" name="password" id="password" autocomplete="current-password" value={{ password }}>
+                    {% if form_errors.password %}
+                        <span class="form_error">{{ form_errors.password }}</span>
+                    {% endif %}
                 </div>
                 
                 <button class="submit_button" type="submit">Register</button>
             </form>
+            
+            {% if user_already_exists %}<span class="form_error">User already exists</span>{% endif %}
+            {% if register_error %}<span class="form_error">Unexpected error</span>{% endif %}
         </div>
     </main>
 {% endblock %}
