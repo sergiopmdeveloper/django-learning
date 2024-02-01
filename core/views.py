@@ -65,6 +65,17 @@ def sign_in(request: HttpRequest) -> HttpResponse:
     return render(request, "registration/login.html")
 
 
+def sign_up(request: HttpRequest) -> HttpResponse:
+    """
+    View for the sign up page.
+    """
+
+    if request.user.is_authenticated:
+        return redirect("/")
+
+    return render(request, "registration/register.html")
+
+
 def sign_out(request: HttpRequest) -> HttpResponse:
     """
     View for logging out.

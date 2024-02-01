@@ -1,0 +1,48 @@
+{% extends "base.html" %}
+
+{% load static %}
+{% block css %}
+    <link rel="stylesheet" href="{% static 'core/registration.css' %}">
+{% endblock %}
+
+{% block title %}Register{% endblock %}
+{% block description %}Register page of the Django Learning app{% endblock %}
+
+{% block content %}
+    <main class="form_block">
+        <div class="form_container">
+            <h1 class="form_title">Register</h1>
+            
+            <form class="form_content" method="post">
+                {% csrf_token %}
+                
+                <div class="form_field">
+                    <label class="field_label" for="username">Username</label>
+                    <input class="field_input" type="text" name="username" id="username" autocomplete="username">
+                </div>
+
+                <div class="form_field">
+                    <label class="field_label" for="first_name">First name</label>
+                    <input class="field_input" type="text" name="first_name" id="first_name" autocomplete="first_name">
+                </div>
+
+                <div class="form_field">
+                    <label class="field_label" for="last_name">Last name</label>
+                    <input class="field_input" type="text" name="last_name" id="last_name" autocomplete="last_name">
+                </div>
+
+                <div class="form_field">
+                    <label class="field_label" for="email">Email</label>
+                    <input class="field_input" type="text" name="email" id="email" autocomplete="email">
+                </div>
+
+                <div class="form_field">
+                    <label class="field_label" for="password">Password</label>
+                    <input class="field_input" type="password" name="password" id="password" autocomplete="current-password" value={{ password }}>
+                </div>
+                
+                <button class="submit_button" type="submit">Register</button>
+            </form>
+        </div>
+    </main>
+{% endblock %}
